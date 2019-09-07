@@ -14,65 +14,7 @@ var path = require("path");
 var app = express();
 var PORT = 3000;
 //Prefilled are dummy variables.
-var reservations = 
-[
-    {
-        routeName: "yoda",
-        name: "Yoda",
-        role: "Jedi Master",
-        age: 900,
-        forcePoints: 2000
-    },
-    {
-        routeName: "1",
-        name: "Yoda",
-        role: "Jedi Master",
-        age: 900,
-        forcePoints: 2000
-    },
-    {
-        routeName: "2",
-        name: "Yoda",
-        role: "Jedi Master",
-        age: 900,
-        forcePoints: 2000
-    },
-    {
-        routeName: "3",
-        name: "Yoda",
-        role: "Jedi Master",
-        age: 900,
-        forcePoints: 2000
-    },
-    {
-        routeName: "4",
-        name: "Yoda",
-        role: "Jedi Master",
-        age: 900,
-        forcePoints: 2000
-    },
-    {
-        routeName: "5",
-        name: "Yoda",
-        role: "Jedi Master",
-        age: 900,
-        forcePoints: 2000
-    },
-    {
-        routeName: "6",
-        name: "Yoda",
-        role: "Jedi Master",
-        age: 900,
-        forcePoints: 2000
-    },
-    {
-        routeName: "7",
-        name: "Yoda",
-        role: "Jedi Master",
-        age: 900,
-        forcePoints: 2000
-    }
-];
+var reservations =[];
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -116,6 +58,15 @@ app.get("/api/tables", function(req, res) {
     return res.json(false);
   });
 
+
+
+app.post("/api/tables", function(req, res) {
+
+    reservations.push(req.body);
+    //res.json(req.body);
+    if(reservations.length<5){res.send(true);}
+    else res.send(false);
+  });
 
 
 
