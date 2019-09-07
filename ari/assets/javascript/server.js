@@ -14,6 +14,8 @@ var path = require("path");
 var app = express();
 var PORT = 3000;
 
+var tables=[]
+
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -21,6 +23,10 @@ app.use(express.json());
 app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "view.html"));
   });
+
+  app.push("/")
+
+  
 
 
 
