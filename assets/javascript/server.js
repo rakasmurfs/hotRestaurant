@@ -13,7 +13,66 @@ var path = require("path");
 // =============================================================
 var app = express();
 var PORT = 3000;
-var reservations = [];
+//Prefilled are dummy variables.
+var reservations = 
+[
+    {
+        routeName: "yoda",
+        name: "Yoda",
+        role: "Jedi Master",
+        age: 900,
+        forcePoints: 2000
+    },
+    {
+        routeName: "1",
+        name: "Yoda",
+        role: "Jedi Master",
+        age: 900,
+        forcePoints: 2000
+    },
+    {
+        routeName: "2",
+        name: "Yoda",
+        role: "Jedi Master",
+        age: 900,
+        forcePoints: 2000
+    },
+    {
+        routeName: "3",
+        name: "Yoda",
+        role: "Jedi Master",
+        age: 900,
+        forcePoints: 2000
+    },
+    {
+        routeName: "4",
+        name: "Yoda",
+        role: "Jedi Master",
+        age: 900,
+        forcePoints: 2000
+    },
+    {
+        routeName: "5",
+        name: "Yoda",
+        role: "Jedi Master",
+        age: 900,
+        forcePoints: 2000
+    },
+    {
+        routeName: "6",
+        name: "Yoda",
+        role: "Jedi Master",
+        age: 900,
+        forcePoints: 2000
+    },
+    {
+        routeName: "7",
+        name: "Yoda",
+        role: "Jedi Master",
+        age: 900,
+        forcePoints: 2000
+    }
+];
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -28,6 +87,34 @@ app.get("/tables", function(req, res) {
     res.sendFile(path.join(__dirname, "../../tables.html"));
   });
 
+app.get("/api/waitlist", function(req, res){
+    if(reservations.length>4)
+    {
+        var afterFive=[];
+       for (var i = 5; i < reservations.length; i++) 
+        {
+            afterFive.push(reservations[i]);
+        };
+        return res.json(afterFive);
+
+    };
+  
+    return res.json(false);
+  });
+app.get("/api/tables", function(req, res) {
+    if(reservations)
+    {
+        var firstFive=[];
+       for (var i = 0; i <=4; i++) 
+        {
+            firstFive.push(reservations[i]);
+        };
+        return res.json(firstFive);
+
+    };
+  
+    return res.json(false);
+  });
 
 
 
