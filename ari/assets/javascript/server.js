@@ -30,11 +30,19 @@ app.get("/tables", function (req, res) {
 
 
 
-
-
-
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function () {
   console.log("App listening on PORT " + PORT);
 });
+
+//exports
+
+module.exports = {
+  createReservation:function(req,res){
+
+  },
+  getTables:function(req,res){
+
+  }
+}
