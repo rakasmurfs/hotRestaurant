@@ -8,10 +8,13 @@
 // =============================================================
 var express = require("express");
 var path = require("path");
+var sql = require("mysql")
 
 // Sets up the Express App
 // =============================================================
 var app = express();
+
+app.use(express.json())
 var PORT = 3000;
 var reservations = [];
 // Sets up the Express app to handle data parsing
@@ -21,6 +24,11 @@ app.use(express.json());
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "../../index.html"));
 });
+
+app.post("/", function (req, res) {
+  console.log(req.body);
+  res.send(request.body);
+})
 app.get("/reservation", function (req, res) {
   res.sendFile(path.join(__dirname, "../../reservation.html"));
 });
@@ -30,19 +38,11 @@ app.get("/tables", function (req, res) {
 
 
 
+
+
+
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function () {
   console.log("App listening on PORT " + PORT);
 });
-
-//exports
-
-module.exports = {
-  createReservation:function(req,res){
-
-  },
-  getTables:function(req,res){
-
-  }
-}
