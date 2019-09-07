@@ -27,7 +27,18 @@ app.get("/reservation", function(req, res) {
 app.get("/tables", function(req, res) {
     res.sendFile(path.join(__dirname, "../../tables.html"));
   });
-
+app.get("/api/waitlist", function(req, res) {
+    if(reservations.length > 5)
+    {
+        for (var i = 5; i < characters.length; i++) 
+        {
+            return res.json(characters[i]);
+        }            
+    }
+    
+  
+    return res.json(false);
+  });
 
 
 
